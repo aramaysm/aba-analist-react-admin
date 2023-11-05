@@ -3,7 +3,7 @@ import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 
 export const OverviewTotalProfit = (props) => {
-  const { value, sx } = props;
+  const { value, sx, backgroundColorAvatar } = props;
 
   return (
     <Card sx={sx}>
@@ -27,7 +27,7 @@ export const OverviewTotalProfit = (props) => {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'primary.main',
+              backgroundColor: backgroundColorAvatar,
               height: 56,
               width: 56
             }}
@@ -44,5 +44,6 @@ export const OverviewTotalProfit = (props) => {
 
 OverviewTotalProfit.propTypes = {
   value: PropTypes.string,
-  sx: PropTypes.object
+  sx: PropTypes.object,
+  backgroundColorAvatar: PropTypes.string,
 };

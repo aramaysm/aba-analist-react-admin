@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
 import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
-import CurrencyDollarIcon from '@heroicons/react/24/solid/CurrencyDollarIcon';
+import BriefcaseIcon from '@heroicons/react/24/solid/BriefcaseIcon';
+import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 
-export const OverviewBudget = (props) => {
-  const { difference, positive = false, sx, value } = props;
+export const OverviewServicesLog = (props) => {
+  const { difference, positive = false, sx, value, backgroundColorAvatar } = props;
 
   return (
     <Card sx={sx}>
@@ -21,7 +22,7 @@ export const OverviewBudget = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Budget
+              Service log
             </Typography>
             <Typography variant="h4">
               {value}
@@ -29,13 +30,13 @@ export const OverviewBudget = (props) => {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'error.main',
+              backgroundColor: backgroundColorAvatar,
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <CurrencyDollarIcon />
+              <HeartIcon />
             </SvgIcon>
           </Avatar>
         </Stack>
@@ -77,9 +78,10 @@ export const OverviewBudget = (props) => {
   );
 };
 
-OverviewBudget.prototypes = {
+OverviewServicesLog.prototypes = {
   difference: PropTypes.number,
   positive: PropTypes.bool,
   sx: PropTypes.object,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  backgroundColorAvatar: PropTypes.string,
 };

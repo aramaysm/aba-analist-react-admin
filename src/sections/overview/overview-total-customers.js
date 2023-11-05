@@ -5,7 +5,7 @@ import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 
 export const OverviewTotalCustomers = (props) => {
-  const { difference, positive = false, sx, value } = props;
+  const { difference, positive = false, sx, value, title, backgroundColorAvatar, icon } = props;
 
   return (
     <Card sx={sx}>
@@ -21,7 +21,7 @@ export const OverviewTotalCustomers = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Total Customers
+              {title}
             </Typography>
             <Typography variant="h4">
               {value}
@@ -29,13 +29,13 @@ export const OverviewTotalCustomers = (props) => {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'success.main',
+              backgroundColor: backgroundColorAvatar,
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <UsersIcon />
+              {icon}
             </SvgIcon>
           </Avatar>
         </Stack>
@@ -81,6 +81,9 @@ OverviewTotalCustomers.propTypes = {
   difference: PropTypes.number,
   positive: PropTypes.bool,
   value: PropTypes.string.isRequired,
-  sx: PropTypes.object
+  sx: PropTypes.object,
+  icon: PropTypes.object,
+  title: PropTypes.string,
+  backgroundColorAvatar: PropTypes.string,
 };
 

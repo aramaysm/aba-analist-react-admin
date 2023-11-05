@@ -104,8 +104,8 @@ const useChartOptions = () => {
   };
 };
 
-export const OverviewSales = (props) => {
-  const { chartSeries, sx } = props;
+export const OverviewGraphicBar = (props) => {
+  const { chartSeries, sx, title } = props;
   const chartOptions = useChartOptions();
 
   return (
@@ -124,7 +124,7 @@ export const OverviewSales = (props) => {
             Sync
           </Button>
         )}
-        title="Sales"
+        title={title}
       />
       <CardContent>
         <Chart
@@ -135,25 +135,14 @@ export const OverviewSales = (props) => {
           width="100%"
         />
       </CardContent>
-      <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
-        <Button
-          color="inherit"
-          endIcon={(
-            <SvgIcon fontSize="small">
-              <ArrowRightIcon />
-            </SvgIcon>
-          )}
-          size="small"
-        >
-          Overview
-        </Button>
-      </CardActions>
+      
+     
     </Card>
   );
 };
 
-OverviewSales.protoTypes = {
+OverviewGraphicBar.protoTypes = {
   chartSeries: PropTypes.array.isRequired,
-  sx: PropTypes.object
+  sx: PropTypes.object,
+  title: PropTypes.string.isRequired,
 };

@@ -2,14 +2,18 @@ import Head from 'next/head';
 import { subDays, subHours } from 'date-fns';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { OverviewBudget } from 'src/sections/overview/overview-budget';
+import { OverviewServicesLog } from 'src/sections/overview/overview-serviceslog';
 import { OverviewLatestOrders } from 'src/sections/overview/overview-latest-orders';
 import { OverviewLatestProducts } from 'src/sections/overview/overview-latest-products';
-import { OverviewSales } from 'src/sections/overview/overview-sales';
+import { OverviewGraphicBar } from 'src/sections/overview/overview-graphic-bar';
 import { OverviewTasksProgress } from 'src/sections/overview/overview-tasks-progress';
 import { OverviewTotalCustomers } from 'src/sections/overview/overview-total-customers';
 import { OverviewTotalProfit } from 'src/sections/overview/overview-total-profit';
 import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
+import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import BriefcaseIcon from '@heroicons/react/24/solid/BriefcaseIcon';
+
+
 
 const now = new Date();
 
@@ -17,7 +21,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Overview | Devias Kit
+        Dashboard | Aba Analyst
       </title>
     </Head>
     <Box
@@ -37,11 +41,12 @@ const Page = () => (
             sm={6}
             lg={3}
           >
-            <OverviewBudget
+            <OverviewServicesLog
               difference={12}
               positive
               sx={{ height: '100%' }}
-              value="$24k"
+              value="15000"
+              backgroundColorAvatar='primary.main'
             />
           </Grid>
           <Grid
@@ -50,10 +55,13 @@ const Page = () => (
             lg={3}
           >
             <OverviewTotalCustomers
-              difference={16}
+              difference={5}
+              title={"Total Clients"}
               positive={false}
               sx={{ height: '100%' }}
-              value="1.6k"
+              value="300"
+              backgroundColorAvatar='warning.main'
+              icon={<UsersIcon/>}
             />
           </Grid>
           <Grid
@@ -61,10 +69,24 @@ const Page = () => (
             sm={6}
             lg={3}
           >
-            <OverviewTasksProgress
+            {
+              /*
+              <OverviewTasksProgress
               sx={{ height: '100%' }}
               value={75.5}
             />
+              */
+            }
+             <OverviewTotalCustomers
+              difference={5}
+              title={"Total Contractors"}
+              positive={false}
+              sx={{ height: '100%' }}
+              value="350"
+              backgroundColorAvatar='secondary.main'
+              icon={<BriefcaseIcon/>}
+            />
+            
           </Grid>
           <Grid
             xs={12}
@@ -74,13 +96,15 @@ const Page = () => (
             <OverviewTotalProfit
               sx={{ height: '100%' }}
               value="$15k"
+              backgroundColorAvatar='success.main'
             />
           </Grid>
           <Grid
             xs={12}
-            lg={8}
+            lg={7}
           >
-            <OverviewSales
+            <OverviewGraphicBar
+            title={"Services logs"}
               chartSeries={[
                 {
                   name: 'This year',
@@ -97,15 +121,18 @@ const Page = () => (
           <Grid
             xs={12}
             md={6}
-            lg={4}
+            lg={5}
           >
             <OverviewTraffic
-              chartSeries={[63, 15, 22]}
-              labels={['Desktop', 'Tablet', 'Phone']}
+            title="Places of services"
+              chartSeries={[33, 15, 22, 30]}
+              labels={['Home', 'School', 'Office', 'Community']}
               sx={{ height: '100%' }}
             />
           </Grid>
-          <Grid
+          {
+            /*
+             <Grid
             xs={12}
             md={6}
             lg={4}
@@ -217,6 +244,10 @@ const Page = () => (
               sx={{ height: '100%' }}
             />
           </Grid>
+            */
+
+          }
+         
         </Grid>
       </Container>
     </Box>
